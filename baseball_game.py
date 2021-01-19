@@ -284,12 +284,12 @@ def main():
     # 위의 코드를 포함하여 자유로운 수정이 가능함
     game_ended = False
     while not game_ended:
-        user_input = input("Input guess number : ")
+        user_input = input("Input guess number : ",)
+        while user_input is not '0' and not is_validated_number(user_input):
+            print("Wrong Input")
+            user_input = input("Input guess number : ",)
         if user_input == '0':
             break
-        while not is_validated_number(user_input):
-            print("Wrong Input")
-            user_input = input("Input guess number : ")
         strike, ball = get_strikes_or_ball(user_input, random_number)
         print('Strikes : {0} , Balls : {1}'.format(strike, ball))
         if strike == 3:
